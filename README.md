@@ -2,7 +2,7 @@
 
 **`Cloud Engineer (Platform/ SRE/ Data)`**
 
-I'm a cloud platform engineer, focusing on building scalable, automated, cloud-native solutions.
+I build stuff for the cloud.
 ---
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/braveokafor) 
 [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@braveokafor) 
