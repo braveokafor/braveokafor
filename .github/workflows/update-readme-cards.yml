@@ -1,0 +1,50 @@
+name: Update README cards
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 6 * * *
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Generate stats card
+        uses: stats-organization/github-readme-stats-action@v1
+        with:
+          card: stats
+          options: theme=nightowl&hide_border=true&include_all_commits=true&count_private=true&show=reviews&hide=stars,contribs,issues&hide_rank=true
+          path: profile/stats.svg
+          token: ${{ secrets.READMESTATS_TOKEN }}
+
+      - name: Generate top languages card
+        uses: stats-organization/github-readme-stats-action@v1
+        with:
+          card: top-langs
+          options: theme=nightowl&hide_border=true&layout=compact&langs_count=8&exclude_repo=ollama-webui-helm,helm-charts,ollama-helm,open-webui-helm,terraform-aws-template,terraform-gcp-template,terraform-gcp-github-actions&hide=html,css,scss,jupyter%20notebook,shell,dockerfile,hcl,terraform,smarty,mustache,makefile,procfile,jinja,d
+          path: profile/top-langs.svg
+          token: ${{ secrets.READMESTATS_TOKEN }}
+
+      - name: Commit cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/stats.svg profile/top-langs.svg
+          git diff --cached --quiet || git commit -m "chore: update stats cards"
+          git push
+
+      - name: Generate contribution calendar
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.READMESTATS_TOKEN }}
+          filename: profile/isocalendar.svg
+          output_action: commit
+          committer_message: "chore: update contribution calendar"
+          base: ""
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year

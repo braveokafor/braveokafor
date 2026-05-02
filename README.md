@@ -37,4 +37,9 @@ Currently at **[Weaviate](https://weaviate.io)** - building control plane servic
 
 ### Stats
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=braveokafor&theme=nightowl&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+<a href="https://github.com/braveokafor">
+  <img alt="Stats" src="./profile/stats.svg" />
+  <img alt="Top Languages" src="./profile/top-langs.svg" />
+</a>
+
+<img alt="Contribution calendar" src="./profile/isocalendar.svg" />
